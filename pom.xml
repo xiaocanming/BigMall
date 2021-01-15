@@ -13,6 +13,8 @@
         <module>bigmall-admin</module>
         <module>bigmall-mbg</module>
         <module>bigmall-common</module>
+        <module>bigmall-getway</module>
+        <module>bigmall-auth</module>
     </modules>
 
     <parent>
@@ -73,12 +75,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--&lt;!&ndash;mall通用模块&ndash;&gt;-->
-            <!--<dependency>-->
-                <!--<groupId>com.xcm.bigmall</groupId>-->
-                <!--<artifactId>bigmall-common</artifactId>-->
-                <!--<version>${bigmall-common.version}</version>-->
-            <!--</dependency>-->
+            <!--mall通用模块-->
+            <dependency>
+                <groupId>com.xcm.bigmall</groupId>
+                <artifactId>bigmall-common</artifactId>
+                <version>${bigmall-common.version}</version>
+            </dependency>
             <!--mall中MBG生成模块-->
             <dependency>
                 <groupId>com.xcm.bigmall</groupId>
