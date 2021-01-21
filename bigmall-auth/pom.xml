@@ -12,6 +12,7 @@
     <artifactId>bigmall-auth</artifactId>
 
     <dependencies>
+
         <dependency>
             <groupId>com.xcm.bigmall</groupId>
             <artifactId>bigmall-common</artifactId>
