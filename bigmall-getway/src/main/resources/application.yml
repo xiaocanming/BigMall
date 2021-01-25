@@ -8,10 +8,10 @@ spring:
           enabled: true
           lower-case-service-id: true #使用小写service-id
       routes: #配置路由路径
-        - id: mall-auth
-          uri: lb://mall-auth
-          predicates:
-            - Path=/mall-auth/**
+        - id: bigmall-auth #路由的ID
+          uri: lb://bigmall-auth #匹配后路由地址  lb://是指当前注册中心下  后面的是微服务的名字
+          predicates: # 断言，路径相匹配的进行路由
+            - Path=/bigmall-auth/**
           filters:
             - StripPrefix=1
         - id: mall-admin
@@ -61,8 +61,8 @@ secure:
       - "/**/*.ico"
       - "/webjars/springfox-swagger-ui/**"
       - "/actuator/**"
-      - "/mall-auth/oauth/token"
-      - "/mall-auth/rsa/publicKey"
+      - "/bigmall-auth/oauth/token"
+      - "/bigmall-auth/rsa/publicKey"
       - "/mall-search/**"
       - "/mall-portal/sso/login"
       - "/mall-portal/sso/register"

@@ -22,6 +22,7 @@
         <dependency>
             <groupId>com.xcm.bigmall</groupId>
             <artifactId>bigmall-common</artifactId>
+            <!--引入依赖的时候有一个坑,sprint-boot-starter-web这个依赖是不能够引入的,引入的话getway就启动不了-->
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>

@@ -39,6 +39,7 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.inMemory()
+                // 后台登录的appid设置
                 .withClient("admin-app")
                 .secret(passwordEncoder.encode("123456"))
                 .scopes("all")
@@ -46,6 +47,7 @@ public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {
                 .accessTokenValiditySeconds(3600*24)
                 .refreshTokenValiditySeconds(3600*24*7)
                 .and()
+                // 前台登录的appid设置
                 .withClient("portal-app")
                 .secret(passwordEncoder.encode("123456"))
                 .scopes("all")
