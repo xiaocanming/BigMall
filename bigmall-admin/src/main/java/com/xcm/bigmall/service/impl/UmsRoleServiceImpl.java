@@ -7,6 +7,7 @@ import com.xcm.bigmall.mapper.UmsRoleMenuRelationMapper;
 import com.xcm.bigmall.mapper.UmsRoleResourceRelationMapper;
 import com.xcm.bigmall.model.*;
 import com.xcm.bigmall.service.UmsAdminCacheService;
+import com.xcm.bigmall.service.UmsResourceService;
 import com.xcm.bigmall.service.UmsRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
     @Autowired
     private UmsRoleDao roleDao;
     @Autowired
-    private UmsAdminCacheService adminCacheService;
+    private UmsResourceService resourceService;
     @Override
     public int create(UmsRole role) {
         role.setCreateTime(new Date());
@@ -51,7 +52,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
         UmsRoleExample example = new UmsRoleExample();
         example.createCriteria().andIdIn(ids);
         int count = roleMapper.deleteByExample(example);
-        adminCacheService.delResourceListByRoleIds(ids);
+        resourceService.initResourceRolesMap();
         return count;
     }
 
@@ -114,7 +115,7 @@ public class UmsRoleServiceImpl implements UmsRoleService {
             relation.setResourceId(resourceId);
             roleResourceRelationMapper.insert(relation);
         }
-        adminCacheService.delResourceListByRole(roleId);
+        resourceService.initResourceRolesMap();
         return resourceIds.size();
     }
 }

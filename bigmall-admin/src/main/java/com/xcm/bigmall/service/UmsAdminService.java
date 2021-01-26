@@ -1,5 +1,6 @@
 package com.xcm.bigmall.service;
 
+import com.xcm.bigmall.common.api.CommonResult;
 import com.xcm.bigmall.common.domain.UserDto;
 import com.xcm.bigmall.dto.UmsAdminParam;
 import com.xcm.bigmall.dto.UpdateAdminPasswordParam;
@@ -30,15 +31,9 @@ public interface UmsAdminService  {
      * 登录功能
      * @param username 用户名
      * @param password 密码
-     * @return 生成的JWT的token
+     * @return 调用认证中心返回结果
      */
-    String login(String username, String password);
-
-//    /**
-//     * 刷新token的功能
-//     * @param oldToken 旧的token
-//     */
-//    String refreshToken(String oldToken);
+    CommonResult login(String username, String password);
 
     /**
      * 根据用户id获取用户
@@ -85,5 +80,6 @@ public interface UmsAdminService  {
      * 获取用户信息
      */
     UserDto loadUserByUsername(String username);
+
 
 }

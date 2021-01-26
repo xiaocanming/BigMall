@@ -3,6 +3,7 @@ package com.xcm.bigmall.controller;
 import cn.hutool.core.collection.CollUtil;
 import com.xcm.bigmall.common.api.CommonPage;
 import com.xcm.bigmall.common.api.CommonResult;
+import com.xcm.bigmall.common.domain.UserDto;
 import com.xcm.bigmall.dto.UmsAdminLoginParam;
 import com.xcm.bigmall.dto.UmsAdminParam;
 import com.xcm.bigmall.dto.UpdateAdminPasswordParam;
@@ -56,13 +57,7 @@ public class UmsAdminController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public CommonResult login(@Validated @RequestBody UmsAdminLoginParam umsAdminLoginParam) {
-        String token = adminService.login(umsAdminLoginParam.getUsername(), umsAdminLoginParam.getPassword());
-        if (token == null) {
-            return CommonResult.validateFailed("用户名或密码错误");
-        }
-        Map<String, String> tokenMap = new HashMap<>();
-        tokenMap.put("token", token);
-        return CommonResult.success(tokenMap);
+        return adminService.login(umsAdminLoginParam.getUsername(),umsAdminLoginParam.getPassword());
     }
 
     @ApiOperation(value = "获取当前登录用户信息")
@@ -182,6 +177,14 @@ public class UmsAdminController {
     public CommonResult<List<UmsRole>> getRoleList(@PathVariable Long adminId) {
         List<UmsRole> roleList = adminService.getRoleList(adminId);
         return CommonResult.success(roleList);
+    }
+
+    @ApiOperation("根据用户名获取通用用户信息")
+    @RequestMapping(value = "/loadByUsername", method = RequestMethod.GET)
+    @ResponseBody
+    public UserDto loadUserByUsername(@RequestParam String username) {
+        UserDto userDTO = adminService.loadUserByUsername(username);
+        return userDTO;
     }
 
 }

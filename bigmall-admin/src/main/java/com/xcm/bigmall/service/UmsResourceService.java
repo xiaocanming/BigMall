@@ -4,6 +4,7 @@ package com.xcm.bigmall.service;
 import com.xcm.bigmall.model.UmsResource;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @描述 后台资源管理Service
@@ -11,7 +12,6 @@ import java.util.List;
  * @创建时间 2020/12/2
  */
 public interface UmsResourceService {
-
     /**
      * 添加资源
      */
@@ -41,4 +41,9 @@ public interface UmsResourceService {
      * 查询全部资源
      */
     List<UmsResource> listAll();
+
+    /**
+     * 初始化资源角色规则
+     */
+    Map<String,List<String>> initResourceRolesMap();
 }
