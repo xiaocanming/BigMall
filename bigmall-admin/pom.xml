@@ -19,10 +19,19 @@
     </parent>
 
     <dependencies>
+
         <!--DruidConfiguration-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xcm.bigmall</groupId>
+            <artifactId>bigmall-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.xcm.bigmall</groupId>
+            <artifactId>bigmall-mbg</artifactId>
         </dependency>
         <!--使用nacos配置文件 及 bootstrap-->
         <dependency>
@@ -39,14 +48,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.xcm.bigmall</groupId>
-            <artifactId>bigmall-mbg</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.xcm.bigmall</groupId>
-            <artifactId>bigmall-common</artifactId>
-        </dependency>
         <!--FeignClient-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -57,6 +58,4 @@
             <artifactId>feign-okhttp</artifactId>
         </dependency>
     </dependencies>
-
-
 </project>

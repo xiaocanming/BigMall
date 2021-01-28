@@ -14,40 +14,23 @@ spring:
             - Path=/bigmall-auth/**
           filters:
             - StripPrefix=1
-        - id: mall-admin
-          uri: lb://mall-admin
+        - id: bigmall-admin
+          uri: lb://bigmall-admin
           predicates:
-            - Path=/mall-admin/**
-          filters:
-            - StripPrefix=1
-        - id: mall-portal
-          uri: lb://mall-portal
-          predicates:
-            - Path=/mall-portal/**
-          filters:
-            - StripPrefix=1
-        - id: mall-search
-          uri: lb://mall-search
-          predicates:
-            - Path=/mall-search/**
-          filters:
-            - StripPrefix=1
-        - id: mall-demo
-          uri: lb://mall-demo
-          predicates:
-            - Path=/mall-demo/**
+            - Path=/bigmall-admin/**
           filters:
             - StripPrefix=1
   security:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: 'http://localhost:8201/mall-auth/rsa/publicKey' #配置RSA的公钥访问地址
+          jwk-set-uri: 'http://localhost:8201/bigmall-auth/rsa/publicKey' #配置RSA的公钥访问地址
   redis:
-    database: 0
-    port: 6379
-    host: localhost
-    password:
+    host: 47.99.113.23 # Redis服务器地址
+    database: 0 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password: # Redis服务器连接密码（默认为空）
+    timeout: 300ms # 连接超时时间（毫秒）
 secure:
   ignore:
     urls: #配置白名单路径
@@ -63,16 +46,9 @@ secure:
       - "/actuator/**"
       - "/bigmall-auth/oauth/token"
       - "/bigmall-auth/rsa/publicKey"
-      - "/mall-search/**"
-      - "/mall-portal/sso/login"
-      - "/mall-portal/sso/register"
-      - "/mall-portal/sso/getAuthCode"
-      - "/mall-portal/home/**"
-      - "/mall-portal/product/**"
-      - "/mall-portal/brand/**"
-      - "/mall-admin/admin/login"
-      - "/mall-admin/admin/register"
-      - "/mall-admin/minio/upload"
+      - "/bigmall-admin/admin/login"
+      - "/bigmall-admin/admin/register"
+      - "/bigmall-admin/minio/upload"
 management: #开启SpringBoot Admin的监控
   endpoints:
     web:

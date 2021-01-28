@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * @描述
  * @创建人 xcm
- * @创建时间 2021/1/14
+ * @创建时间 2021/1/27
  */
 @FeignClient("bigmall-portal")
 public interface UmsMemberService {
     @GetMapping("/sso/loadByUsername")
     UserDto loadUserByUsername(@RequestParam String username);
 }
+

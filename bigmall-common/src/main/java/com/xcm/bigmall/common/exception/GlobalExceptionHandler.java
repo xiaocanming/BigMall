@@ -54,4 +54,11 @@ public class GlobalExceptionHandler {
         }
         return CommonResult.validateFailed(message);
     }
+
+    // 添加全局错误  api报错会进入这个方法
+    @ResponseBody
+    @ExceptionHandler(Exception.class)
+    public CommonResult handleException(Exception e){
+        return CommonResult.failed(e.getMessage());
+    }
 }

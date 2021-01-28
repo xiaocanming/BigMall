@@ -35,8 +35,6 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/admin")
 public class UmsAdminController {
 
-
-
     @Resource
     private UmsAdminService adminService;
     @Resource

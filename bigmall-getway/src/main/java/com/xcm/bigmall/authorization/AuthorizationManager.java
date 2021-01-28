@@ -37,6 +37,7 @@ import java.util.stream.Collectors;
  */
 @Component
 public class AuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
+    //访问Redis数据库的资源信息 直接访问加快速度
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
     @Autowired
@@ -67,6 +68,7 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
             JWSObject jwsObject = JWSObject.parse(realToken);
             String userStr = jwsObject.getPayload().toString();
+            //获取JWT的Payload信息
             UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
             if (AuthConstant.ADMIN_CLIENT_ID.equals(userDto.getClientId()) && !pathMatcher.match(AuthConstant.ADMIN_URL_PATTERN, uri.getPath())) {
                 return Mono.just(new AuthorizationDecision(false));
