@@ -63,6 +63,11 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
         try {
             String token = request.getHeaders().getFirst(AuthConstant.JWT_TOKEN_HEADER);
             if(StrUtil.isEmpty(token)){
+                //            {
+                //                "code": 403,
+                //                    "data": "Access Denied",
+                //                    "message": "没有相关权限"
+                //            }
                 return Mono.just(new AuthorizationDecision(false));
             }
             String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
