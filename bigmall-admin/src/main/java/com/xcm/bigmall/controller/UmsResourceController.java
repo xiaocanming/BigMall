@@ -2,6 +2,7 @@ package com.xcm.bigmall.controller;
 
 import com.xcm.bigmall.common.api.CommonPage;
 import com.xcm.bigmall.common.api.CommonResult;
+import com.xcm.bigmall.common.domain.UserDto;
 import com.xcm.bigmall.model.UmsResource;
 import com.xcm.bigmall.service.UmsResourceService;
 import io.swagger.annotations.Api;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @描述 后台资源管理Controller
@@ -88,5 +90,13 @@ public class UmsResourceController {
     public CommonResult<List<UmsResource>> listAll() {
         List<UmsResource> resourceList = resourceService.listAll();
         return CommonResult.success(resourceList);
+    }
+
+    @ApiOperation("获取角色资源初始化信息")
+    @RequestMapping(value = "/listResourceRoles", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String,List<String>> getResourceRolesList() {
+        Map<String,List<String>> resourceRolesList = resourceService.initResourceRolesMap();
+        return resourceRolesList;
     }
 }

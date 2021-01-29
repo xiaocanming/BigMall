@@ -31,6 +31,13 @@ spring:
     port: 6379 # Redis服务器连接端口
     password: # Redis服务器连接密码（默认为空）
     timeout: 300ms # 连接超时时间（毫秒）
+redis:
+  database: smallmall
+  key:
+    admin: 'ums:admin'
+    resourceList: 'ums:resourceList'
+  expire:
+    common: 86400 # 24小时
 secure:
   ignore:
     urls: #配置白名单路径
@@ -57,3 +64,10 @@ management: #开启SpringBoot Admin的监控
   endpoint:
     health:
       show-details: always
+
+feign:
+  okhttp:
+    enabled: true
+ribbon:
+  ConnectTimeout: 3000 #服务请求连接超时时间（毫秒）
+  ReadTimeout: 3000 #服务请求处理超时时间（毫秒）

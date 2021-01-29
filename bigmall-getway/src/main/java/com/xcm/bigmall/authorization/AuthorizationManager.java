@@ -1,5 +1,6 @@
 package com.xcm.bigmall.authorization;
 
+import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.convert.Convert;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
@@ -7,6 +8,8 @@ import com.nimbusds.jose.JWSObject;
 import com.xcm.bigmall.common.constant.AuthConstant;
 import com.xcm.bigmall.common.domain.UserDto;
 import com.xcm.bigmall.config.IgnoreUrlsConfig;
+import com.xcm.bigmall.service.UmsAdminService;
+import com.xcm.bigmall.service.UmsResourceCacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpMethod;
@@ -37,9 +40,10 @@ import java.util.stream.Collectors;
  */
 @Component
 public class AuthorizationManager implements ReactiveAuthorizationManager<AuthorizationContext> {
-    //访问Redis数据库的资源信息 直接访问加快速度
     @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private UmsResourceCacheService umsResourceCacheService;
+    @Autowired
+    private UmsAdminService umsAdminService;
     @Autowired
     private IgnoreUrlsConfig ignoreUrlsConfig;
 
@@ -90,13 +94,25 @@ public class AuthorizationManager implements ReactiveAuthorizationManager<Author
             return Mono.just(new AuthorizationDecision(true));
         }
         //管理端路径需校验权限
-        Map<Object, Object> resourceRolesMap = redisTemplate.opsForHash().entries(AuthConstant.RESOURCE_ROLES_MAP_KEY);
-        Iterator<Object> iterator = resourceRolesMap.keySet().iterator();
         List<String> authorities = new ArrayList<>();
-        while (iterator.hasNext()) {
-            String pattern = (String) iterator.next();
-            if (pathMatcher.match(pattern, uri.getPath())) {
-                authorities.addAll(Convert.toList(String.class, resourceRolesMap.get(pattern)));
+        Map<Object,Object> resourceRolesObjectMap = umsResourceCacheService.getMap(AuthConstant.RESOURCE_ROLES_MAP_KEY);
+        if(CollUtil.isNotEmpty(resourceRolesObjectMap)){
+            Iterator<Object> iterator = resourceRolesObjectMap.keySet().iterator();
+            while (iterator.hasNext()) {
+                String pattern = (String) iterator.next();
+                if (pathMatcher.match(pattern, uri.getPath())) {
+                    authorities.addAll(Convert.toList(String.class, resourceRolesObjectMap.get(pattern)));
+                }
+            }
+
+        }else {
+            Map<String, List<String>> resourceRolesMap = umsAdminService.getResourceRolesList();
+            Iterator<String> iterator = resourceRolesMap.keySet().iterator();
+            while (iterator.hasNext()) {
+                String pattern = iterator.next();
+                if (pathMatcher.match(pattern, uri.getPath())) {
+                    authorities.addAll(Convert.toList(String.class, resourceRolesMap.get(pattern)));
+                }
             }
         }
         authorities = authorities.stream().map(i -> i = AuthConstant.AUTHORITY_PREFIX + i).collect(Collectors.toList());
