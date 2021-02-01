@@ -157,6 +157,7 @@ public class UmsAdminController {
         return CommonResult.failed();
     }
 
+
     @ApiOperation("给用户分配角色")
     @RequestMapping(value = "/role/update", method = RequestMethod.POST)
     @ResponseBody
