@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8081
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -47,6 +47,16 @@ redis:
     admin: 'ums:admin'
   expire:
     common: 86400 # 24小时
+
+#添加log日志
+logging:
+  file:
+    path: D:\Log
+  level:
+    root: info
+    com.xcm.bigmall: debug
+logstash:
+  host: 47.99.113.23
 
 minio:
   endpoint: http://47.99.113.23:9090 #MinIO服务所在地址

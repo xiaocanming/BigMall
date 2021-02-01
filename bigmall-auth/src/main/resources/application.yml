@@ -5,6 +5,15 @@ management:
     web:
       exposure:
         include: "*"
+#添加log日志
+logging:
+  file:
+    path: D:\Log
+  level:
+    root: info
+    com.xcm.bigmall: debug
+logstash:
+  host: 47.99.113.23
 feign:
   okhttp:
     enabled: true

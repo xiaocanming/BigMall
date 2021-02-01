@@ -64,6 +64,15 @@ management: #开启SpringBoot Admin的监控
   endpoint:
     health:
       show-details: always
+#添加log日志
+logging:
+  file:
+    path: D:\Log
+  level:
+    root: info
+    com.xcm.bigmall: debug
+logstash:
+  host: 47.99.113.23
 
 feign:
   okhttp:
