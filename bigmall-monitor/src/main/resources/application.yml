@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: bigmall-monitor
+  profiles:
+    active: dev #默认为开发环境
+  security: # 配置登录用户名和密码
+    user:
+      name: xcm
+      password: 123
+  boot:  # 不显示admin-server的监控信息
+    admin:
+      discovery:
+        ignored-services: ${spring.application.name}
+server:
+  port: 8101
