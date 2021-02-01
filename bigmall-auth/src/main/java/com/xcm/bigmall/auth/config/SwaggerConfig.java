@@ -16,10 +16,10 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     @Override
     public SwaggerProperties swaggerProperties() {
         return SwaggerProperties.builder()
-                .apiBasePackage("com.macro.mall.auth.controller")
-                .title("mall认证中心")
-                .description("mall认证中心相关接口文档")
-                .contactName("macro")
+                .apiBasePackage("com.xcm.bigmall.auth.controller") //指定扫描的包
+                .title("bigmall认证中心")
+                .description("bigmall认证中心相关接口文档")
+                .contactName("xcm")
                 .version("1.0")
                 .enableSecurity(true)
                 .build();

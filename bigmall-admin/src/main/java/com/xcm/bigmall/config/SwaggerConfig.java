@@ -18,9 +18,9 @@ public class SwaggerConfig extends BaseSwaggerConfig {
     public SwaggerProperties swaggerProperties() {
 
         return SwaggerProperties.builder()
-                .apiBasePackage("com.xcm.smallmall.controller") //指定扫描的包
-                .title("smallmall后台系统")
-                .description("smallmall后台相关接口文档")
+                .apiBasePackage("com.xcm.bigmall.controller") //指定扫描的包
+                .title("bigmall后台系统")
+                .description("bigmall后台相关接口文档")
                 .contactName("xcm")
                 .version("1.0")
                 .enableSecurity(true)
