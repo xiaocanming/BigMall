@@ -19,7 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * @描述
+ * @描述 获取用户信息并写入UserDetails 在JwtTokenEnhancer可以获取UserDetails
  * @创建人 xcm
  * @创建时间 2021/1/14
  */

@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @描述 JWT内容增强器
+ * @描述 JWT内容增强器 增加在gateway中解析的数据
  * @创建人 xcm
  * @创建时间 2021/1/14
  */
@@ -24,7 +24,6 @@ public class JwtTokenEnhancer implements TokenEnhancer {
         //把用户ID设置到JWT中
         info.put("id", securityUser.getId());
         info.put("client_id",securityUser.getClientId());
-        info.put("enhance", "enhance info");
         ((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(info);
         return accessToken;
     }

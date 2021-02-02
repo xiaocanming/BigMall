@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * @描述
+ * @描述 登录用户信息
  * @创建人 xcm
  * @创建时间 2021/1/14
  */

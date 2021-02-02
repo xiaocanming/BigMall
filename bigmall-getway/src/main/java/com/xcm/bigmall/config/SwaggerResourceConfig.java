@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * @描述 Swagger资源配置 Swagger资源配置，用于聚合其他微服务中Swagger的api-docs访问路径
+ *          文档地址http://localhost:8201/doc.html
  * @创建人 xcm
  * @创建时间 2021/2/1
  */

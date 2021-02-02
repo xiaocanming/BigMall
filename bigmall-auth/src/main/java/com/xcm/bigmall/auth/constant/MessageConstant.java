@@ -1,7 +1,7 @@
 package com.xcm.bigmall.auth.constant;
 
 /**
- * @描述
+ * @描述 消息常量
  * @创建人 xcm
  * @创建时间 2021/1/14
  */

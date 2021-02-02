@@ -8,7 +8,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 /**
- * @描述 访问地址 http://localhost:8101
+ * @描述 SpringSecurity配置
  * @创建人 xcm
  * @创建时间 2021/2/1
  */

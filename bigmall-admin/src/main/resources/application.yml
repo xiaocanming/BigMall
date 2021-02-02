@@ -28,9 +28,10 @@ spring:
     multipart:
       enabled: true #开启文件上传
       max-file-size: 10MB #限制文件上传大小为10M
+# 注意使用的是mybatis-plus插件则为mybatis-plus 使用mybatis插件就为mybatis
 mybatis-plus:
   mapper-locations:
-    #需要扫描到引用包的资源文件需要添加 classpath*
+    # 注意需要扫描到引用包的资源文件需要添加 classpath*
     - classpath*:com/**/mapperxml/*.xml
     - classpath:/dao/*.xml
 management: #开启SpringBoot Admin的监控

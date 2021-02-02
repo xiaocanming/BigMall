@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @描述
+ * @描述 Mapper生成器  不用maven自带的插件是因为需要印
  * @创建人 xcm
  * @创建时间 2021/1/7
  */

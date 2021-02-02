@@ -8,6 +8,8 @@
     <artifactId>bigmall-mbg</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <name>bigmall-mbg</name>
+    <description>bigmall使用数据库自动生成的Mapper</description>
 
     <parent>
         <artifactId>bigmall</artifactId>
@@ -28,7 +30,7 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!--model对应的swagger注解-->
+        <!--model对应的swagger注解  knife4j（不包含API文档的前端UI包）-->
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-micro-spring-boot-starter</artifactId>

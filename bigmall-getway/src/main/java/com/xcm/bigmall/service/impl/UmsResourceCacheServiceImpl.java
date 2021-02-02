@@ -17,7 +17,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * @描述
+ * @描述 缓存获取用户资源服务实现类
  * @创建人 xcm
  * @创建时间 2021/1/29
  */

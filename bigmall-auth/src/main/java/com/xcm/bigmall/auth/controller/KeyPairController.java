@@ -11,7 +11,7 @@ import java.security.interfaces.RSAPublicKey;
 import java.util.Map;
 
 /**
- * @描述
+ * @描述 token公共秘钥
  * @创建人 xcm
  * @创建时间 2021/1/14
  */
@@ -21,6 +21,7 @@ public class KeyPairController {
     @Autowired
     private KeyPair keyPair;
 
+    //token公共秘钥
     @GetMapping("/rsa/publicKey")
     public Map<String, Object> getKey() {
         RSAPublicKey publicKey = (RSAPublicKey) keyPair.getPublic();

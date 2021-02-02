@@ -5,7 +5,7 @@ import com.github.pagehelper.PageInfo;
 import java.util.List;
 
 /**
- * @描述
+ * @描述 分页返回通用类
  * @创建人 xcm
  * @创建时间 2021/1/25
  */

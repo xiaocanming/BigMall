@@ -28,24 +28,21 @@
     <properties>
         <java.version>1.8</java.version>
         <!--maven版本-->
+        <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
+        <admin-starter-server.version>2.2.3</admin-starter-server.version>
         <bigmall-mbg.version>1.0-SNAPSHOT</bigmall-mbg.version>
         <bigmall-common.version>1.0-SNAPSHOT</bigmall-common.version>
         <mysql-connector.version>8.0.20</mysql-connector.version>
         <mybatis-generator.version>1.4.0</mybatis-generator.version>
         <pagehelper.version>5.2.0</pagehelper.version>
         <druid.version>1.1.23</druid.version>
-        <swagger2.version>2.9.2</swagger2.version>
-        <swagger-models.version>1.6.0</swagger-models.version>
-        <swagger-annotations.version>1.6.0</swagger-annotations.version>
         <hutool.version>5.5.1</hutool.version>
         <mybatis-plus.version>3.0.7.1</mybatis-plus.version>
         <jjwt.version>0.9.0</jjwt.version>
         <logstash-logback.version>5.3</logstash-logback.version>
         <minio.version>7.1.0</minio.version>
-        <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
-        <spring-cloud-alibaba.version>2.2.0.RELEASE</spring-cloud-alibaba.version>
         <knife4j.version>2.0.4</knife4j.version>
-        <admin-starter-server.version>2.2.3</admin-starter-server.version>
     </properties>
 
     <dependencies>
@@ -163,5 +160,17 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <!--SpringBoot打包成jar项目的插件-->
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>

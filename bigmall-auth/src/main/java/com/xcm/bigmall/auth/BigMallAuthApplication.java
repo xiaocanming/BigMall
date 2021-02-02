@@ -6,7 +6,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
- * @描述
+ * @描述 用户权限服务
  * @创建人 xcm
  * @创建时间 2021/1/13
  */

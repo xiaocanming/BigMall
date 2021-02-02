@@ -35,6 +35,7 @@ import java.util.stream.Collectors;
 
 /**
  * @描述 鉴权管理器，用于判断是否有资源的访问权限
+ *          在ResourceServerConfig的WebFluxSecurity中自定义鉴权操作需要实现ReactiveAuthorizationManager接口
  * @创建人 xcm
  * @创建时间 2021/1/15
  */

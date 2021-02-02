@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * @描述 全局异常处理
+ * @描述 全局异常处理  api报错会跳转到这个方法里面
  * @创建人 xcm
  * @创建时间 2020/12/3
  */

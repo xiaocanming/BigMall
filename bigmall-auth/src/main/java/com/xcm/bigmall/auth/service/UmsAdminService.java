@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * @描述
+ * @描述 获取后台用户信息
  * @创建人 xcm
  * @创建时间 2021/1/14
  */

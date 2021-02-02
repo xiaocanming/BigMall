@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 /**
- * @描述
+ * @描述 获取token返回dto
  * @创建人 xcm
  * @创建时间 2021/1/15
  */
