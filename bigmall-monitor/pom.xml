@@ -8,9 +8,8 @@
     <groupId>com.xcm.bigmall</groupId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>bigmall-monitor</name>
-    <description>bigmall-monitor project for smallmall</description>
+    <description>bigmall演示中心服务</description>
 
     <parent>
         <artifactId>bigmall</artifactId>
@@ -19,22 +18,34 @@
     </parent>
 
     <dependencies>
+        <!--监控演示中心需要的包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <dependency>
             <groupId>de.codecentric</groupId>
             <artifactId>spring-boot-admin-starter-server</artifactId>
         </dependency>
+        <!--服务注册-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <!--SecuritySecureConfig-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

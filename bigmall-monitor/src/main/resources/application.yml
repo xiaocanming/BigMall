@@ -3,7 +3,7 @@ spring:
     name: bigmall-monitor
   profiles:
     active: dev #默认为开发环境
-  security: # 配置登录用户名和密码
+  security: # 配置演示中心登录用户名和密码
     user:
       name: xcm
       password: 123

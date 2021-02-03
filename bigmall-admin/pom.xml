@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <name>bigmall-admin</name>
-    <description>bigmall-admin project for smallmall</description>
+    <description>bigmall后台管理服务</description>
 
     <parent>
         <artifactId>bigmall</artifactId>
