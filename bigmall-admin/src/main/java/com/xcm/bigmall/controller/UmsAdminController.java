@@ -61,12 +61,8 @@ public class UmsAdminController {
     @ApiOperation(value = "获取当前登录用户信息")
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResult getAdminInfo(Principal principal) {
-        if(principal==null){
-            return CommonResult.unauthorized(null);
-        }
-        String username = principal.getName();
-        UmsAdmin umsAdmin = adminService.getAdminByUsername(username);
+    public CommonResult getAdminInfo() {
+        UmsAdmin umsAdmin = adminService.getCurrentAdmin();
         Map<String, Object> data = new HashMap<>();
         data.put("username", umsAdmin.getUsername());
         data.put("menus", roleService.getMenuList(umsAdmin.getId()));

@@ -81,5 +81,8 @@ public interface UmsAdminService  {
      */
     UserDto loadUserByUsername(String username);
 
-
+    /**
+     * 获取当前登录后台用户
+     */
+    UmsAdmin getCurrentAdmin();
 }

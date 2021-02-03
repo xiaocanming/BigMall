@@ -3,6 +3,7 @@ package com.xcm.bigmall.service.impl;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.crypto.digest.BCrypt;
+import cn.hutool.json.JSONUtil;
 import com.github.pagehelper.PageHelper;
 import com.xcm.bigmall.common.api.CommonResult;
 import com.xcm.bigmall.common.api.ResultCode;
@@ -53,6 +54,8 @@ public class UmsAdminServiceImpl  implements UmsAdminService {
     private UmsAdminRoleRelationDao adminRoleRelationDao;
     @Autowired
     private AuthService authService;
+    @Autowired
+    private HttpServletRequest request;
 
     @Override
     public UmsAdmin getAdminByUsername(String username) {
@@ -237,6 +240,23 @@ public class UmsAdminServiceImpl  implements UmsAdminService {
             return userDTO;
         }
         return null;
+    }
+
+    @Override
+    public UmsAdmin getCurrentAdmin() {
+        String userStr = request.getHeader(AuthConstant.USER_TOKEN_HEADER);
+        if(StrUtil.isEmpty(userStr)){
+            Asserts.fail(ResultCode.UNAUTHORIZED);
+        }
+        UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
+        UmsAdmin admin = adminCacheService.getAdmin(userDto.getUsername());
+        if(admin!=null){
+            return admin;
+        }else{
+            admin = adminMapper.selectByPrimaryKey(userDto.getId());
+            adminCacheService.setAdmin(admin);
+            return admin;
+        }
     }
 
 }
